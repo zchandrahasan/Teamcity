@@ -54,5 +54,8 @@ changeBuildType("85319817-0d8b-4049-b879-1ca7ee7a0b93") {
         update<BuildStep>(0) {
             enabled = false
         }
+        update<BuildStep>(1) {
+            enabled = false
+        }
     }
 }

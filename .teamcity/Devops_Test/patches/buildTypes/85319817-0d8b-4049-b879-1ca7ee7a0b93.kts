@@ -15,6 +15,12 @@ To apply the patch, change the buildType with uuid = '85319817-0d8b-4049-b879-1c
 accordingly and delete the patch script.
 */
 changeBuildType("85319817-0d8b-4049-b879-1ca7ee7a0b93") {
+    params {
+        add {
+            text("buildStatus", "", allowEmpty = true)
+        }
+    }
+
     expectSteps {
         step {
             name = "Duplicate Code"

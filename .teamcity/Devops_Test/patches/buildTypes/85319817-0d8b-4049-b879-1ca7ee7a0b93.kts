@@ -5,6 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2017_2.BuildStep
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.DotnetBuildStep
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.VSTestStep
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.dotnetBuild
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.vstest
 import jetbrains.buildServer.configs.kotlin.v2017_2.ui.*
 
@@ -56,6 +57,16 @@ changeBuildType("85319817-0d8b-4049-b879-1ca7ee7a0b93") {
         }
         update<BuildStep>(1) {
             enabled = false
+        }
+        insert(4) {
+            powerShell {
+                scriptMode = script {
+                    content = """Write-Host "Build Status - %buildStatus%""""
+                }
+                param("org.jfrog.artifactory.selectedDeployableServer.downloadSpecSource", "Job configuration")
+                param("org.jfrog.artifactory.selectedDeployableServer.useSpecs", "false")
+                param("org.jfrog.artifactory.selectedDeployableServer.uploadSpecSource", "Job configuration")
+            }
         }
     }
 }

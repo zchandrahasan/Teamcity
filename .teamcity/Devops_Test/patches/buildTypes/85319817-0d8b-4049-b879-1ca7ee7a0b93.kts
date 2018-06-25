@@ -19,6 +19,9 @@ changeBuildType("85319817-0d8b-4049-b879-1ca7ee7a0b93") {
         add {
             text("buildStatus", "", allowEmpty = true)
         }
+        add {
+            text("status", "", allowEmpty = true)
+        }
     }
 
     expectSteps {

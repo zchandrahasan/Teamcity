@@ -83,7 +83,10 @@ changeBuildType("85319817-0d8b-4049-b879-1ca7ee7a0b93") {
         insert(4) {
             powerShell {
                 scriptMode = script {
-                    content = """Write-Host "Build Status - %buildStatus%""""
+                    content = """
+                        Write-Host "Build Status - %status%"
+                        Write-Host "Build Status - %buildStatus%"
+                    """.trimIndent()
                 }
                 param("org.jfrog.artifactory.selectedDeployableServer.downloadSpecSource", "Job configuration")
                 param("org.jfrog.artifactory.selectedDeployableServer.useSpecs", "false")
